@@ -30,7 +30,7 @@ module.exports = {
         "Degree": {
             "Cmp" : "lexinfo:degree lexinfo:comparative",
             "Sup" : "lexinfo:degree lexinfo:superlative",
-            "Pos" : "lexinfo:degree lexinfo:positiveDegreeForm", // в OpenCorpora отсутствует
+            // "Pos" : "lexinfo:degree lexinfo:positiveDegreeForm", // в OpenCorpora отсутствует
         },
         "VerbForm": {
             "Part" :	"lexinfo:partOfSpeech lexinfo:participle",
@@ -42,7 +42,7 @@ module.exports = {
         "Mood": {
             "Ind" : "lexinfo:mood lexinfo:indicative",
             "Imp" : "lexinfo:mood lexinfo:imperative",
-            "Cnd" : "lexinfo:mood lexinfo:subjunctive", // в OpenCorpora отсутствует
+            // "Cnd" : "lexinfo:mood lexinfo:subjunctive", // в OpenCorpora отсутствует
         },
         "Tense": {
             "Pres" :	"lexinfo:tense lexinfo:present",
@@ -56,10 +56,10 @@ module.exports = {
         "Voice": {
             "Act" :	"lexinfo:voice lexinfo:activeVoice",
             "Pass" : "lexinfo:voice lexinfo:passiveVoice",
-            "Mid" : "lexinfo:voice lexinfo:middleVoice", // в OpenCorpora отсутствует
+            // "Mid" : "lexinfo:voice lexinfo:middleVoice", // в OpenCorpora отсутствует
         },
         "Polarity": {
-            "Neg" : "lexinfo:negative lexinfo:no", // в OpenCorpora отсутствует
+            // "Neg" : "lexinfo:negative lexinfo:no", // в OpenCorpora отсутствует
         },
         "Person": {
             "1" :	"lexinfo:person lexinfo:firstPerson",
@@ -87,17 +87,17 @@ module.exports = {
         "ADV" :	"lexinfo:partOfSpeech lexinfo:adverb",
         "PRON" :	"lexinfo:partOfSpeech lexinfo:pronoun",
         "ADP" :	"lexinfo:partOfSpeech lexinfo:preposition",
-        "CCONJ" :	"lexinfo:partOfSpeech lexinfo:coordinatingConjunction", // в OpenCorpora отсутствует
-        "SCONJ" :	"lexinfo:partOfSpeech lexinfo:subordinatingConjunction", // в OpenCorpora отсутствует
+        // "CCONJ" :	"lexinfo:partOfSpeech lexinfo:coordinatingConjunction", // в OpenCorpora отсутствует
+        // "SCONJ" :	"lexinfo:partOfSpeech lexinfo:subordinatingConjunction", // в OpenCorpora отсутствует
         "PART" :	"lexinfo:partOfSpeech lexinfo:particle",
         "INTJ" : "lexinfo:partOfSpeech lexinfo:interjection",
         //"Impe" : "lexinfo:partOfSpeech lexinfo:impersonalVerb",
         //"Coll" : "lexinfo:partOfSpeech lexinfo:collectiveNumeral",
-        "AUX" : "lexinfo:partOfSpeech lexinfo:mainVerb", // в OpenCorpora отсутствует
-        "PUNCT" : "lexinfo:partOfSpeech lexinfo:punctuation", // в OpenCorpora отсутствует
-        "PROPN" : "lexinfo:partOfSpeech lexinfo:properNoun", // в OpenCorpora отсутствует
-        "DET" : "lexinfo:partOfSpeech lexinfo:article", // в OpenCorpora отсутствует (надо подумать!!!)
-        "SYM" : "lexinfo:termType lexinfo:symbol", // в OpenCorpora отсутствует
+        // "AUX" : "lexinfo:partOfSpeech lexinfo:mainVerb", // в OpenCorpora отсутствует
+        // "PUNCT" : "lexinfo:partOfSpeech lexinfo:punctuation", // в OpenCorpora отсутствует
+        // "PROPN" : "lexinfo:partOfSpeech lexinfo:properNoun", // в OpenCorpora отсутствует
+        // "DET" : "lexinfo:partOfSpeech lexinfo:article", // в OpenCorpora отсутствует (надо подумать!!!)
+        // "SYM" : "lexinfo:termType lexinfo:symbol", // в OpenCorpora отсутствует
     },
     "links": {
         "nsubj" : "http://kloud.one/rdfudedges#Nsubj" ,

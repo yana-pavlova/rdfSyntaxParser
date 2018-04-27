@@ -52,7 +52,7 @@ let terms = [
     // 'предприятия',
 ]
 
-parseAndAddRules(require('./rules/nsubj.json'))
+parseAndAddRules(require('../rules/nsubj.json'))
 // parseAndAddRules(false)
 // parseAndAddRules(fakeRules)
     .then((msg) => {

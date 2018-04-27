@@ -1,0 +1,110 @@
+[
+    {
+        "text": " text = Дело в том, что кто-то когда-то унес парик, и вот парикмахерскому цеху приказом было вменено в обязанность выдавать парики по списку, забирая тотчас по выступлении.",
+        "w1Form": "выдавать",
+        "w2Form": "вменено",
+        "w1Morph": "POS=VERB|Aspect=Imp|VerbForm=Inf|Voice=Act",
+        "w2Morph": "POS=VERB|Aspect=Perf|Gender=Neut|Number=Sing|Tense=Past|Variant=Short|VerbForm=Part|Voice=Pass",
+        "id": "csubj:pass_1",
+        "type": "csubj:pass",
+        "rule": "(?S lexinfo:partOfSpeech lexinfo:verb) ^ (?S lexinfo:aspect lexinfo:perfective) ^ (?S lexinfo:gender lexinfo:neuter) ^ (?S lexinfo:number lexinfo:singular) ^ (?S lexinfo:tense lexinfo:past) ^ (?S lexinfo:partOfSpeech lexinfo:shortParticiple) ^ (?S lexinfo:partOfSpeech lexinfo:participle) ^ (?S lexinfo:voice lexinfo:passiveVoice) ^ (?O lexinfo:partOfSpeech lexinfo:verb) ^ (?O lexinfo:aspect lexinfo:imperfective) ^ (?O lexinfo:verbFormMood lexinfo:infinitive) ^ (?O lexinfo:voice lexinfo:activeVoice) -> (_:id http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://kloud.one/rdfudedges#Csubj_pass) ^ (_:id http://www.w3.org/2002/07/owl#annotatedProperty http://www.w3.org/2000/01/rdf-schema#subClassOf) ^ (_:id http://www.w3.org/2002/07/owl#annotatedSource ?O) ^ (_:id http://www.w3.org/2002/07/owl#annotatedTarget ?S) .",
+        "frequency": 8,
+        "weight": 1
+    },
+    {
+        "text": " text = Он пересиливал себя, вставал и ходил по комнате, засовывал под одеяло безмятежно спящего своего парашютиста, ложился, но несчастья опять преследовали его: ему запрещалось иметь личный ящичек как противопоставление себя коллективу; затем он отдавался под следствие за хищение парика; Платонов в оркестре делал немыслимую киксу.",
+        "w1Form": "иметь",
+        "w2Form": "запрещалось",
+        "w1Morph": "POS=VERB|Aspect=Imp|VerbForm=Inf|Voice=Act",
+        "w2Morph": "POS=VERB|Aspect=Imp|Gender=Neut|Mood=Ind|Number=Sing|Tense=Past|VerbForm=Fin|Voice=Pass",
+        "id": "csubj:pass_2",
+        "type": "csubj:pass",
+        "rule": "(?S lexinfo:partOfSpeech lexinfo:verb) ^ (?S lexinfo:aspect lexinfo:imperfective) ^ (?S lexinfo:gender lexinfo:neuter) ^ (?S lexinfo:mood lexinfo:indicative) ^ (?S lexinfo:number lexinfo:singular) ^ (?S lexinfo:tense lexinfo:past) ^ (?S lexinfo:voice lexinfo:passiveVoice) ^ (?O lexinfo:partOfSpeech lexinfo:verb) ^ (?O lexinfo:aspect lexinfo:imperfective) ^ (?O lexinfo:verbFormMood lexinfo:infinitive) ^ (?O lexinfo:voice lexinfo:activeVoice) -> (_:id http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://kloud.one/rdfudedges#Csubj_pass) ^ (_:id http://www.w3.org/2002/07/owl#annotatedProperty http://www.w3.org/2000/01/rdf-schema#subClassOf) ^ (_:id http://www.w3.org/2002/07/owl#annotatedSource ?O) ^ (_:id http://www.w3.org/2002/07/owl#annotatedTarget ?S) .",
+        "frequency": 2,
+        "weight": 1
+    },
+    {
+        "text": " text = Для того, чтобы предприятия активнее брали на работу инвалидов, предлагается снизить этим предприятиям налог на прибыль, предоставлять госзаказы и выделять деньги для оборудования мест для лиц с ограниченными физическими возможностями.",
+        "w1Form": "снизить",
+        "w2Form": "предлагается",
+        "w1Morph": "POS=VERB|Aspect=Perf|VerbForm=Inf|Voice=Act",
+        "w2Morph": "POS=VERB|Aspect=Imp|Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin|Voice=Pass",
+        "id": "csubj:pass_3",
+        "type": "csubj:pass",
+        "rule": "(?S lexinfo:partOfSpeech lexinfo:verb) ^ (?S lexinfo:aspect lexinfo:imperfective) ^ (?S lexinfo:mood lexinfo:indicative) ^ (?S lexinfo:number lexinfo:singular) ^ (?S lexinfo:person lexinfo:thirdPerson) ^ (?S lexinfo:tense lexinfo:present) ^ (?S lexinfo:voice lexinfo:passiveVoice) ^ (?O lexinfo:partOfSpeech lexinfo:verb) ^ (?O lexinfo:aspect lexinfo:perfective) ^ (?O lexinfo:verbFormMood lexinfo:infinitive) ^ (?O lexinfo:voice lexinfo:activeVoice) -> (_:id http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://kloud.one/rdfudedges#Csubj_pass) ^ (_:id http://www.w3.org/2002/07/owl#annotatedProperty http://www.w3.org/2000/01/rdf-schema#subClassOf) ^ (_:id http://www.w3.org/2002/07/owl#annotatedSource ?O) ^ (_:id http://www.w3.org/2002/07/owl#annotatedTarget ?S) .",
+        "frequency": 4,
+        "weight": 1
+    },
+    {
+        "text": " text = Этот когнитивный диссонанс предлагается разрешать следующим образом: сузить свой круг доверия до одной персоны, полагая всех остальных \"плохими боярами\".",
+        "w1Form": "разрешать",
+        "w2Form": "предлагается",
+        "w1Morph": "POS=VERB|Aspect=Imp|VerbForm=Inf|Voice=Act",
+        "w2Morph": "POS=VERB|Aspect=Imp|Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin|Voice=Pass",
+        "id": "csubj:pass_4",
+        "type": "csubj:pass",
+        "rule": "(?S lexinfo:partOfSpeech lexinfo:verb) ^ (?S lexinfo:aspect lexinfo:imperfective) ^ (?S lexinfo:mood lexinfo:indicative) ^ (?S lexinfo:number lexinfo:singular) ^ (?S lexinfo:person lexinfo:thirdPerson) ^ (?S lexinfo:tense lexinfo:present) ^ (?S lexinfo:voice lexinfo:passiveVoice) ^ (?O lexinfo:partOfSpeech lexinfo:verb) ^ (?O lexinfo:aspect lexinfo:imperfective) ^ (?O lexinfo:verbFormMood lexinfo:infinitive) ^ (?O lexinfo:voice lexinfo:activeVoice) -> (_:id http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://kloud.one/rdfudedges#Csubj_pass) ^ (_:id http://www.w3.org/2002/07/owl#annotatedProperty http://www.w3.org/2000/01/rdf-schema#subClassOf) ^ (_:id http://www.w3.org/2002/07/owl#annotatedSource ?O) ^ (_:id http://www.w3.org/2002/07/owl#annotatedTarget ?S) .",
+        "frequency": 4,
+        "weight": 1
+    },
+    {
+        "text": " text = Деньгами мамам предлагается распорядиться разумно.",
+        "w1Form": "распорядиться",
+        "w2Form": "предлагается",
+        "w1Morph": "POS=VERB|Aspect=Perf|VerbForm=Inf|Voice=Mid",
+        "w2Morph": "POS=VERB|Aspect=Imp|Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin|Voice=Pass",
+        "id": "csubj:pass_5",
+        "type": "csubj:pass",
+        "rule": "(?S lexinfo:partOfSpeech lexinfo:verb) ^ (?S lexinfo:aspect lexinfo:imperfective) ^ (?S lexinfo:mood lexinfo:indicative) ^ (?S lexinfo:number lexinfo:singular) ^ (?S lexinfo:person lexinfo:thirdPerson) ^ (?S lexinfo:tense lexinfo:present) ^ (?S lexinfo:voice lexinfo:passiveVoice) ^ (?O lexinfo:partOfSpeech lexinfo:verb) ^ (?O lexinfo:aspect lexinfo:perfective) ^ (?O lexinfo:verbFormMood lexinfo:infinitive) -> (_:id http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://kloud.one/rdfudedges#Csubj_pass) ^ (_:id http://www.w3.org/2002/07/owl#annotatedProperty http://www.w3.org/2000/01/rdf-schema#subClassOf) ^ (_:id http://www.w3.org/2002/07/owl#annotatedSource ?O) ^ (_:id http://www.w3.org/2002/07/owl#annotatedTarget ?S) .",
+        "frequency": 1,
+        "weight": 1
+    },
+    {
+        "text": " text = На это существует формуляр - подробное профессиональное руководство по лекарствам, в котором перечисляется, как, от чего, какие препараты давать и чего от них ждать.",
+        "w1Form": "как",
+        "w2Form": "перечисляется",
+        "w1Morph": "POS=ADV|Degree=Pos",
+        "w2Morph": "POS=VERB|Aspect=Imp|Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin|Voice=Pass",
+        "id": "csubj:pass_6",
+        "type": "csubj:pass",
+        "rule": "(?S lexinfo:partOfSpeech lexinfo:verb) ^ (?S lexinfo:aspect lexinfo:imperfective) ^ (?S lexinfo:mood lexinfo:indicative) ^ (?S lexinfo:number lexinfo:singular) ^ (?S lexinfo:person lexinfo:thirdPerson) ^ (?S lexinfo:tense lexinfo:present) ^ (?S lexinfo:voice lexinfo:passiveVoice) ^ (?O lexinfo:partOfSpeech lexinfo:adverb) -> (_:id http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://kloud.one/rdfudedges#Csubj_pass) ^ (_:id http://www.w3.org/2002/07/owl#annotatedProperty http://www.w3.org/2000/01/rdf-schema#subClassOf) ^ (_:id http://www.w3.org/2002/07/owl#annotatedSource ?O) ^ (_:id http://www.w3.org/2002/07/owl#annotatedTarget ?S) .",
+        "frequency": 1,
+        "weight": 1
+    },
+    {
+        "text": " text = (В 2007 году из бюджета было выделено 63,3 млн руб., в 2008 году предусмотрено выделить 129,8 млн руб., а в последующие два года - по 198,7 млн руб.).",
+        "w1Form": "выделить",
+        "w2Form": "предусмотрено",
+        "w1Morph": "POS=VERB|Aspect=Perf|VerbForm=Inf|Voice=Act",
+        "w2Morph": "POS=VERB|Aspect=Perf|Gender=Neut|Number=Sing|Tense=Past|Variant=Short|VerbForm=Part|Voice=Pass",
+        "id": "csubj:pass_7",
+        "type": "csubj:pass",
+        "rule": "(?S lexinfo:partOfSpeech lexinfo:verb) ^ (?S lexinfo:aspect lexinfo:perfective) ^ (?S lexinfo:gender lexinfo:neuter) ^ (?S lexinfo:number lexinfo:singular) ^ (?S lexinfo:tense lexinfo:past) ^ (?S lexinfo:partOfSpeech lexinfo:shortParticiple) ^ (?S lexinfo:partOfSpeech lexinfo:participle) ^ (?S lexinfo:voice lexinfo:passiveVoice) ^ (?O lexinfo:partOfSpeech lexinfo:verb) ^ (?O lexinfo:aspect lexinfo:perfective) ^ (?O lexinfo:verbFormMood lexinfo:infinitive) ^ (?O lexinfo:voice lexinfo:activeVoice) -> (_:id http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://kloud.one/rdfudedges#Csubj_pass) ^ (_:id http://www.w3.org/2002/07/owl#annotatedProperty http://www.w3.org/2000/01/rdf-schema#subClassOf) ^ (_:id http://www.w3.org/2002/07/owl#annotatedSource ?O) ^ (_:id http://www.w3.org/2002/07/owl#annotatedTarget ?S) .",
+        "frequency": 3,
+        "weight": 1
+    },
+    {
+        "text": " text = В последующие годы планировалось доставить грунт с Луны и отправить туда луноход (в 2004 и 2006 гг. соответственно), участвовать в совместных с НАСА проектах доставки грунта с Марса (2005 г.) и развертывания сети станций на Красной планете (проект InterMarsNet, 2007 г.) и даже доставить образцы вещества с астероида (2008 г.).",
+        "w1Form": "доставить",
+        "w2Form": "планировалось",
+        "w1Morph": "POS=VERB|Aspect=Perf|VerbForm=Inf|Voice=Act",
+        "w2Morph": "POS=VERB|Aspect=Imp|Gender=Neut|Mood=Ind|Number=Sing|Tense=Past|VerbForm=Fin|Voice=Pass",
+        "id": "csubj:pass_8",
+        "type": "csubj:pass",
+        "rule": "(?S lexinfo:partOfSpeech lexinfo:verb) ^ (?S lexinfo:aspect lexinfo:imperfective) ^ (?S lexinfo:gender lexinfo:neuter) ^ (?S lexinfo:mood lexinfo:indicative) ^ (?S lexinfo:number lexinfo:singular) ^ (?S lexinfo:tense lexinfo:past) ^ (?S lexinfo:voice lexinfo:passiveVoice) ^ (?O lexinfo:partOfSpeech lexinfo:verb) ^ (?O lexinfo:aspect lexinfo:perfective) ^ (?O lexinfo:verbFormMood lexinfo:infinitive) ^ (?O lexinfo:voice lexinfo:activeVoice) -> (_:id http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://kloud.one/rdfudedges#Csubj_pass) ^ (_:id http://www.w3.org/2002/07/owl#annotatedProperty http://www.w3.org/2000/01/rdf-schema#subClassOf) ^ (_:id http://www.w3.org/2002/07/owl#annotatedSource ?O) ^ (_:id http://www.w3.org/2002/07/owl#annotatedTarget ?S) .",
+        "frequency": 1,
+        "weight": 1
+    },
+    {
+        "text": " text = В 1950 году FIA было решено занести результаты отдельных гонок в классе \"Формула-1\" в общий протокол чемпионата мира.",
+        "w1Form": "занести",
+        "w2Form": "FIA",
+        "w1Morph": "POS=VERB|Aspect=Perf|VerbForm=Inf|Voice=Act",
+        "w2Morph": "POS=PROPN|Foreign=Yes",
+        "id": "csubj:pass_9",
+        "type": "csubj:pass",
+        "rule": "(?S lexinfo:termType lexinfo:internationalism) ^ (?O lexinfo:partOfSpeech lexinfo:verb) ^ (?O lexinfo:aspect lexinfo:perfective) ^ (?O lexinfo:verbFormMood lexinfo:infinitive) ^ (?O lexinfo:voice lexinfo:activeVoice) -> (_:id http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://kloud.one/rdfudedges#Csubj_pass) ^ (_:id http://www.w3.org/2002/07/owl#annotatedProperty http://www.w3.org/2000/01/rdf-schema#subClassOf) ^ (_:id http://www.w3.org/2002/07/owl#annotatedSource ?O) ^ (_:id http://www.w3.org/2002/07/owl#annotatedTarget ?S) .",
+        "frequency": 1,
+        "weight": 1
+    }
+]
