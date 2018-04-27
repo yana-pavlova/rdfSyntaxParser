@@ -105,7 +105,7 @@ function createWordsRule(w1, w2, sentenceText) {
     
     //var dep = "http://kloud.one/rdfudedges#" + w1.deprel[0].toUpperCase() + w1.deprel.substring(1); // получить название связи в rdf
 
-    var idOfNewEntry = ":id";
+    var idOfNewEntry = "_:id";
     var sub = "?O";
     var head = "?S";
 
@@ -149,7 +149,7 @@ function createRootRule(w1, sentenceText) {
     var dep = conllTags2rdf['links'][w1.deprel];
     // var dep = "http://kloud.one/rdfudedges#" + w1.deprel; // получить название связи в rdf
     //var dep = dep[0].toUpperCase() + dep.substring(1);
-    var idOfNewEntry = ":id";
+    var idOfNewEntry = "_:id";
     var sub = "?O";
     var head = "http://kloud.one/rdfudedges#root_node";
 
@@ -257,7 +257,7 @@ function saveAll() {
 
 
 function save(fileName, content) {    
-    let path = 'rules_all'
+    let path = 'rules'
     fileName = path + '/' + fileName;
     fs.exists(fileName, (exist) => {
         if (exist) {

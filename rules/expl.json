@@ -1,0 +1,38 @@
+[
+    {
+        "text": " text = Собравшийся было уйти Илья Ильич задержался и послушал короткое соло гобоя - это отличался его друг Платонов.",
+        "w1Form": "это",
+        "w2Form": "отличался",
+        "w1Morph": "POS=PART|",
+        "w2Morph": "POS=VERB|Aspect=Imp|Gender=Masc|Mood=Ind|Number=Sing|Tense=Past|VerbForm=Fin|Voice=Mid",
+        "id": "expl_1",
+        "type": "expl",
+        "rule": "(?S lexinfo:partOfSpeech lexinfo:verb) ^ (?S lexinfo:aspect lexinfo:imperfective) ^ (?S lexinfo:gender lexinfo:masculine) ^ (?S lexinfo:mood lexinfo:indicative) ^ (?S lexinfo:number lexinfo:singular) ^ (?S lexinfo:tense lexinfo:past) ^ (?O lexinfo:partOfSpeech lexinfo:particle) -> (_:id http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://kloud.one/rdfudedges#Expl) ^ (_:id http://www.w3.org/2002/07/owl#annotatedProperty http://www.w3.org/2000/01/rdf-schema#subClassOf) ^ (_:id http://www.w3.org/2002/07/owl#annotatedSource ?O) ^ (_:id http://www.w3.org/2002/07/owl#annotatedTarget ?S) .",
+        "frequency": 1,
+        "weight": 1
+    },
+    {
+        "text": " text = Вот они с женой беседовали об операции, метастазах, стадиях, сроках, по-деловому, серьезно беседовали, потом он приходит, а ему говорят, что тело жены в мертвецкой.",
+        "w1Form": "Вот",
+        "w2Form": "беседовали",
+        "w1Morph": "POS=PART|",
+        "w2Morph": "POS=VERB|Aspect=Imp|Mood=Ind|Number=Plur|Tense=Past|VerbForm=Fin|Voice=Act",
+        "id": "expl_2",
+        "type": "expl",
+        "rule": "(?S lexinfo:partOfSpeech lexinfo:verb) ^ (?S lexinfo:aspect lexinfo:imperfective) ^ (?S lexinfo:mood lexinfo:indicative) ^ (?S lexinfo:number lexinfo:plural) ^ (?S lexinfo:tense lexinfo:past) ^ (?S lexinfo:voice lexinfo:activeVoice) ^ (?O lexinfo:partOfSpeech lexinfo:particle) -> (_:id http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://kloud.one/rdfudedges#Expl) ^ (_:id http://www.w3.org/2002/07/owl#annotatedProperty http://www.w3.org/2000/01/rdf-schema#subClassOf) ^ (_:id http://www.w3.org/2002/07/owl#annotatedSource ?O) ^ (_:id http://www.w3.org/2002/07/owl#annotatedTarget ?S) .",
+        "frequency": 1,
+        "weight": 1
+    },
+    {
+        "text": " text = Кого они точно не любят, так это японцев.",
+        "w1Form": "это",
+        "w2Form": "японцев",
+        "w1Morph": "POS=PRON|Animacy=Inan|Case=Nom|Gender=Neut|Number=Sing",
+        "w2Morph": "POS=NOUN|Animacy=Anim|Case=Gen|Gender=Masc|Number=Plur",
+        "id": "expl_3",
+        "type": "expl",
+        "rule": "(?S lexinfo:partOfSpeech lexinfo:noun) ^ (?S lexinfo:animacy lexinfo:animate) ^ (?S lexinfo:case lexinfo:genitiveCase) ^ (?S lexinfo:gender lexinfo:masculine) ^ (?S lexinfo:number lexinfo:plural) ^ (?O lexinfo:partOfSpeech lexinfo:pronoun) ^ (?O lexinfo:animacy lexinfo:inanimate) ^ (?O lexinfo:case lexinfo:nominativeCase) ^ (?O lexinfo:gender lexinfo:neuter) ^ (?O lexinfo:number lexinfo:singular) -> (_:id http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://kloud.one/rdfudedges#Expl) ^ (_:id http://www.w3.org/2002/07/owl#annotatedProperty http://www.w3.org/2000/01/rdf-schema#subClassOf) ^ (_:id http://www.w3.org/2002/07/owl#annotatedSource ?O) ^ (_:id http://www.w3.org/2002/07/owl#annotatedTarget ?S) .",
+        "frequency": 1,
+        "weight": 1
+    }
+]
