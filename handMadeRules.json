@@ -1,0 +1,77 @@
+[
+    {
+        "id": "nsubj_1",
+        "type": "nsubj",
+        "rule": "(?S lexinfo:partOfSpeech lexinfo:verb) ^ (?S lexinfo:number ?N) ^ (?S lexinfo:person ?P) ^ (?O lexinfo:case lexinfo:nominativeCase) ^  (?O lexinfo:partOfSpeech lexinfo:noun) ^ (?O lexinfo:number ?N) ^ (?O lexinfo:person ?P) -> (:id http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://kloud.one/rdfudedges#Nsubj) ^ (:id http://www.w3.org/2002/07/owl#annotatedProperty http://www.w3.org/2000/01/rdf-schema#subClassOf) ^ (:id http://www.w3.org/2002/07/owl#annotatedSource ?O) ^ (:id http://www.w3.org/2002/07/owl#annotatedTarget ?S) ."
+    },
+    {
+        "id": "nsubj_2",
+        "type": "nsubj",
+        "rule": "(?S lexinfo:partOfSpeech lexinfo:verb) ^ (?S lexinfo:number ?N) ^ (?S lexinfo:person ?P) ^ (?O lexinfo:case lexinfo:nominativeCase) ^ (?O lexinfo:partOfSpeech lexinfo:pronoun) ^ (?O lexinfo:number ?N) ^ (?O lexinfo:person ?P) -> (:id http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://kloud.one/rdfudedges#Nsubj) ^ (:id http://www.w3.org/2002/07/owl#annotatedProperty http://www.w3.org/2000/01/rdf-schema#subClassOf) ^ (:id http://www.w3.org/2002/07/owl#annotatedSource ?O) ^ (:id http://www.w3.org/2002/07/owl#annotatedTarget ?S) ."
+    },
+    {
+        "id": "nsubj_3",
+        "type": "nsubj",
+        "rule": "(?S lexinfo:partOfSpeech lexinfo:verb) ^ (?S lexinfo:number ?N) ^ (?S lexinfo:gender ?G) ^ (?O lexinfo:case lexinfo:nominativeCase) ^  (?O lexinfo:partOfSpeech lexinfo:pronoun) ^ (?O lexinfo:number ?N) ^ (?O lexinfo:gender ?G) -> (:id http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://kloud.one/rdfudedges#Nsubj) ^ (:id http://www.w3.org/2002/07/owl#annotatedProperty http://www.w3.org/2000/01/rdf-schema#subClassOf) ^ (:id http://www.w3.org/2002/07/owl#annotatedSource ?O) ^ (:id http://www.w3.org/2002/07/owl#annotatedTarget ?S) ."
+    },
+    {
+        "id": "nsubj_4",
+        "type": "nsubj",
+        "rule": "(?S lexinfo:partOfSpeech lexinfo:verb) ^ (?S lexinfo:number ?N) ^ (?S lexinfo:gender ?G) ^ (?O lexinfo:case lexinfo:nominativeCase) ^  (?O lexinfo:partOfSpeech lexinfo:pronoun) ^ (?O lexinfo:number ?N) ^ (?O lexinfo:gender ?G) -> (:id http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://kloud.one/rdfudedges#Nsubj) ^ (:id http://www.w3.org/2002/07/owl#annotatedProperty http://www.w3.org/2000/01/rdf-schema#subClassOf) ^ (:id http://www.w3.org/2002/07/owl#annotatedSource ?O) ^ (:id http://www.w3.org/2002/07/owl#annotatedTarget ?S) ."
+    },
+    {
+        "id": "obl_1",
+        "type": "obl",
+        "rule": "(?S lexinfo:partOfSpeech lexinfo:verb) ^ (?O lexinfo:partOfSpeech lexinfo:adverb) -> (:id http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://kloud.one/rdfudedges#Obl) ^ (:id http://www.w3.org/2002/07/owl#annotatedProperty http://www.w3.org/2000/01/rdf-schema#subClassOf) ^ (:id http://www.w3.org/2002/07/owl#annotatedSource ?O) ^ (:id http://www.w3.org/2002/07/owl#annotatedTarget ?S) ."
+    },
+    {
+        "id": "obl_2",
+        "type": "obl",
+        "rule": "(?S lexinfo:partOfSpeech lexinfo:verb) ^ (?S lexinfo:number ?N) ^ (?S lexinfo:gender ?G) ^ (?O lexinfo:partOfSpeech lexinfo:noun) ^ (?O lexinfo:case lexinfo:accusativeCase) ^ (?O http://kloud.one/rdfudedges#hasLink http://kloud.one/rdfudedges#Case) -> (:id http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://kloud.one/rdfudedges#Obl) ^ (:id http://www.w3.org/2002/07/owl#annotatedProperty http://www.w3.org/2000/01/rdf-schema#subClassOf) ^ (:id http://www.w3.org/2002/07/owl#annotatedSource ?O) ^ (:id http://www.w3.org/2002/07/owl#annotatedTarget ?S) ."
+    },
+    {
+        "id": "obl_3",
+        "type": "obl",
+        "rule": "(?S lexinfo:partOfSpeech lexinfo:verb) ^ (?S lexinfo:number ?N) ^ (?S lexinfo:gender ?G) ^ (?O lexinfo:partOfSpeech lexinfo:noun) ^ (?O lexinfo:case lexinfo:genitiveCase) ^ (?O http://kloud.one/rdfudedges#hasLink http://kloud.one/rdfudedges#Case) -> (:id http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://kloud.one/rdfudedges#Obl) ^ (:id http://www.w3.org/2002/07/owl#annotatedProperty http://www.w3.org/2000/01/rdf-schema#subClassOf) ^ (:id http://www.w3.org/2002/07/owl#annotatedSource ?O) ^ (:id http://www.w3.org/2002/07/owl#annotatedTarget ?S) ."
+    },
+    {
+        "id": "obl_3",
+        "type": "obl",
+        "rule": "(?S lexinfo:partOfSpeech lexinfo:verb) ^ (?S lexinfo:number ?N) ^ (?S lexinfo:gender ?G) ^ (?O lexinfo:partOfSpeech lexinfo:noun) ^ (?O lexinfo:case lexinfo:dativeCase) ^ (?O http://kloud.one/rdfudedges#hasLink http://kloud.one/rdfudedges#Case) -> (:id http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://kloud.one/rdfudedges#Obl) ^ (:id http://www.w3.org/2002/07/owl#annotatedProperty http://www.w3.org/2000/01/rdf-schema#subClassOf) ^ (:id http://www.w3.org/2002/07/owl#annotatedSource ?O) ^ (:id http://www.w3.org/2002/07/owl#annotatedTarget ?S) ."
+    },
+    {
+        "id": "obl_4",
+        "type": "obl",
+        "rule": "(?S lexinfo:partOfSpeech lexinfo:verb) ^ (?S lexinfo:number ?N) ^ (?S lexinfo:gender ?G) ^ (?O lexinfo:partOfSpeech lexinfo:noun) ^ (?O lexinfo:case lexinfo:instrumentalCase) ^ (?O http://kloud.one/rdfudedges#hasLink http://kloud.one/rdfudedges#Case) -> (:id http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://kloud.one/rdfudedges#Obl) ^ (:id http://www.w3.org/2002/07/owl#annotatedProperty http://www.w3.org/2000/01/rdf-schema#subClassOf) ^ (:id http://www.w3.org/2002/07/owl#annotatedSource ?O) ^ (:id http://www.w3.org/2002/07/owl#annotatedTarget ?S) ."
+    },
+    {
+        "id": "obl_5",
+        "type": "obl",
+        "rule": "(?S lexinfo:partOfSpeech lexinfo:verb) ^ (?S lexinfo:number ?N) ^ (?S lexinfo:gender ?G) ^ (?O lexinfo:partOfSpeech lexinfo:noun) ^ (?O lexinfo:case lexinfo:locativeCase) ^ (?O http://kloud.one/rdfudedges#hasLink http://kloud.one/rdfudedges#Case) -> (:id http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://kloud.one/rdfudedges#Obl) ^ (:id http://www.w3.org/2002/07/owl#annotatedProperty http://www.w3.org/2000/01/rdf-schema#subClassOf) ^ (:id http://www.w3.org/2002/07/owl#annotatedSource ?O) ^ (:id http://www.w3.org/2002/07/owl#annotatedTarget ?S) ."
+    },
+    {
+        "id": "case_1",
+        "type": "case",
+        "rule": "(?S lexinfo:partOfSpeech lexinfo:preposition) ^ (?O lexinfo:partOfSpeech lexinfo:noun) ^ (?O lexinfo:case lexinfo:accusativeCase) -> (:id http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://kloud.one/rdfudedges#Case) ^ (:id http://www.w3.org/2002/07/owl#annotatedProperty http://www.w3.org/2000/01/rdf-schema#subClassOf) ^ (:id http://www.w3.org/2002/07/owl#annotatedSource ?O) ^ (:id http://www.w3.org/2002/07/owl#annotatedTarget ?S) ."
+    },
+    {
+        "id": "case_2",
+        "type": "case",
+        "rule": "(?S lexinfo:partOfSpeech lexinfo:preposition) ^ (?O lexinfo:partOfSpeech lexinfo:noun) ^ (?O lexinfo:case lexinfo:genitiveCase) -> (:id http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://kloud.one/rdfudedges#Case) ^ (:id http://www.w3.org/2002/07/owl#annotatedProperty http://www.w3.org/2000/01/rdf-schema#subClassOf) ^ (:id http://www.w3.org/2002/07/owl#annotatedSource ?O) ^ (:id http://www.w3.org/2002/07/owl#annotatedTarget ?S) ."
+    },
+    {
+        "id": "case_3",
+        "type": "case",
+        "rule": "(?S lexinfo:partOfSpeech lexinfo:preposition) ^ (?O lexinfo:partOfSpeech lexinfo:noun) ^ (?O lexinfo:case lexinfo:dativeCase) -> (:id http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://kloud.one/rdfudedges#Case) ^ (:id http://www.w3.org/2002/07/owl#annotatedProperty http://www.w3.org/2000/01/rdf-schema#subClassOf) ^ (:id http://www.w3.org/2002/07/owl#annotatedSource ?O) ^ (:id http://www.w3.org/2002/07/owl#annotatedTarget ?S) ."
+    },
+    {
+        "id": "case_4",
+        "type": "case",
+        "rule": "(?S lexinfo:partOfSpeech lexinfo:preposition) ^ (?O lexinfo:partOfSpeech lexinfo:noun) ^ (?O lexinfo:case lexinfo:instrumentalCase) -> (:id http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://kloud.one/rdfudedges#Case) ^ (:id http://www.w3.org/2002/07/owl#annotatedProperty http://www.w3.org/2000/01/rdf-schema#subClassOf) ^ (:id http://www.w3.org/2002/07/owl#annotatedSource ?O) ^ (:id http://www.w3.org/2002/07/owl#annotatedTarget ?S) ."
+    },
+    {
+        "id": "case_5",
+        "type": "case",
+        "rule": "(?S lexinfo:partOfSpeech lexinfo:preposition) ^ (?O lexinfo:partOfSpeech lexinfo:noun) ^ (?O lexinfo:case lexinfo:locativeCase) -> (:id http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://kloud.one/rdfudedges#Case) ^ (:id http://www.w3.org/2002/07/owl#annotatedProperty http://www.w3.org/2000/01/rdf-schema#subClassOf) ^ (:id http://www.w3.org/2002/07/owl#annotatedSource ?O) ^ (:id http://www.w3.org/2002/07/owl#annotatedTarget ?S) ."
+    }
+]
