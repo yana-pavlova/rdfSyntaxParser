@@ -1,0 +1,32 @@
+{
+  "name": "russyn",
+  "version": "0.0.1",
+  "description": "UD-based syntax parser with RDF-output.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "rdf",
+    "parser",
+    "syntax",
+    "parser",
+    "syntactical",
+    "analysis",
+    "universal",
+    "dependencies",
+    "ud",
+    "conll",
+    "lexinfo",
+    "ontolex",
+    "ontorugrammaform"
+  ],
+  "author": "",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "n3": "^0.11.3"
+  },
+  "dependencies": {
+    "conllu": "^0.1.2"
+  }
+}

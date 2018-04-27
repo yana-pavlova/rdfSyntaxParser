@@ -1,0 +1,71 @@
+# sent_id = 2010Ekstremizm.xml_49
+# text = Тот, что помоложе, по мере опустошения графина воспалялся все пуще и пуще и в какой-то момент воскликнул: "Ты знаешь, Володь, я человек мирный.
+1	Тот	тот	DET	_	Case=Nom|Gender=Masc|Number=Sing	10	nsubj	10:nsubj	SpaceAfter=No
+2	,	,	PUNCT	_	_	4	punct	4:punct	_
+3	что	что	PRON	_	Case=Nom	4	nsubj	4:nsubj	_
+4	помоложе	молодой	ADJ	_	Degree=Cmp	1	acl:relcl	1:acl:relcl	SpaceAfter=No
+5	,	,	PUNCT	_	_	4	punct	4:punct	_
+6	по	по	ADP	_	_	8	case	8:case	_
+7	мере	мера	NOUN	_	Animacy=Inan|Case=Dat|Gender=Fem|Number=Sing	6	fixed	6:fixed	_
+8	опустошения	опустошение	NOUN	_	Animacy=Inan|Case=Gen|Gender=Neut|Number=Sing	10	obl	10:obl	_
+9	графина	графин	NOUN	_	Animacy=Inan|Case=Gen|Gender=Masc|Number=Sing	8	nmod	8:nmod	_
+10	воспалялся	воспаляться	VERB	_	Aspect=Imp|Gender=Masc|Mood=Ind|Number=Sing|Tense=Past|VerbForm=Fin|Voice=Mid	0	root	0:root	_
+11	все	все	PART	_	_	12	advmod	12:advmod	_
+12	пуще	пуще	ADV	_	Degree=Pos	10	advmod	10:advmod	_
+13	и	и	CCONJ	_	_	14	cc	14:cc	_
+14	пуще	пуще	ADV	_	Degree=Pos	12	conj	12:conj	_
+15	и	и	CCONJ	_	_	19	cc	19:cc	_
+16	в	в	ADP	_	_	18	case	18:case	_
+17	какой-то	какой-то	DET	_	Case=Acc|Gender=Masc|Number=Sing	18	det	18:det	_
+18	момент	момент	NOUN	_	Animacy=Inan|Case=Acc|Gender=Masc|Number=Sing	19	obl	19:obl	_
+19	воскликнул	воскликнуть	VERB	_	Aspect=Perf|Gender=Masc|Mood=Ind|Number=Sing|Tense=Past|VerbForm=Fin|Voice=Act	10	conj	10:conj	SpaceAfter=No
+20	:	:	PUNCT	_	_	19	punct	19:punct	_
+21	"	"	PUNCT	_	_	23	punct	23:punct	SpaceAfter=No
+22	Ты	ты	PRON	_	Case=Nom|Number=Sing|Person=2	23	nsubj	23:nsubj	_
+23	знаешь	знать	VERB	_	Aspect=Imp|Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin|Voice=Act	28	parataxis	28:parataxis	SpaceAfter=No
+24	,	,	PUNCT	_	_	25	punct	25:punct	_
+25	Володь	володя	PROPN	_	Animacy=Anim|Case=Voc|Gender=Masc|Number=Sing	23	vocative	23:vocative	SpaceAfter=No
+26	,	,	PUNCT	_	_	25	punct	25:punct	_
+27	я	я	PRON	_	Case=Nom|Number=Sing|Person=1	28	nsubj	28:nsubj	_
+28	человек	человек	NOUN	_	Animacy=Anim|Case=Nom|Gender=Masc|Number=Sing	19	parataxis	19:parataxis	_
+29	мирный	мирный	ADJ	_	Case=Nom|Degree=Pos|Gender=Masc|Number=Sing	28	amod	28:amod	SpaceAfter=No
+30	.	.	PUNCT	_	_	28	punct	28:punct	_
+
+# sent_id = 2009Kukla_Gitlera.xml_64
+# text = Нельзя уподобляться девице из известного анекдота, которая лежит с пятью мужиками в койке и говорит, закуривая: "Боже, если бы моя мама знала, что я курю!.."
+1	Нельзя	нельзя	ADV	_	Degree=Pos	0	root	0:root	_
+2	уподобляться	уподобляться	VERB	_	Aspect=Imp|VerbForm=Inf|Voice=Mid	1	csubj	1:csubj	_
+3	девице	девица	NOUN	_	Animacy=Anim|Case=Dat|Gender=Fem|Number=Sing	2	iobj	2:iobj	_
+4	из	из	ADP	_	_	6	case	6:case	_
+5	известного	известный	ADJ	_	Case=Gen|Degree=Pos|Gender=Masc|Number=Sing	6	amod	6:amod	_
+6	анекдота	анекдот	NOUN	_	Animacy=Inan|Case=Gen|Gender=Masc|Number=Sing	3	nmod	3:nmod	SpaceAfter=No
+7	,	,	PUNCT	_	_	9	punct	9:punct	_
+8	которая	который	PRON	_	Case=Nom	9	nsubj	9:nsubj	_
+9	лежит	лежать	VERB	_	Aspect=Imp|Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin|Voice=Act	3	acl:relcl	3:acl:relcl	_
+10	с	с	ADP	_	_	12	case	12:case	_
+11	пятью	пять	NUM	_	Case=Ins	12	nummod	12:nummod	_
+12	мужиками	мужик	NOUN	_	Animacy=Anim|Case=Ins|Gender=Masc|Number=Plur	9	obl	9:obl	_
+13	в	в	ADP	_	_	14	case	14:case	_
+14	койке	койка	NOUN	_	Animacy=Inan|Case=Loc|Gender=Fem|Number=Sing	9	obl	9:obl	_
+15	и	и	CCONJ	_	_	16	cc	16:cc	_
+16	говорит	говорить	VERB	_	Aspect=Imp|Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin|Voice=Act	9	conj	9:conj	SpaceAfter=No
+17	,	,	PUNCT	_	_	18	punct	18:punct	_
+18	закуривая	закуривать	VERB	_	Aspect=Imp|Tense=Pres|VerbForm=Conv|Voice=Act	16	advcl	16:advcl	SpaceAfter=No
+19	:	:	PUNCT	_	_	18	punct	18:punct	_
+20	"	"	PUNCT	_	_	27	punct	27:punct	SpaceAfter=No
+21	Боже	бог	NOUN	_	Animacy=Anim|Case=Voc|Gender=Masc|Number=Sing	27	vocative	27:vocative	SpaceAfter=No
+22	,	,	PUNCT	_	_	21	punct	21:punct	_
+23	если	если	SCONJ	_	_	27	mark	27:mark	_
+24	бы	бы	PART	_	Mood=Cnd	27	aux	27:aux	_
+25	моя	мой	DET	_	Case=Nom|Gender=Fem|Number=Sing	26	det	26:det	_
+26	мама	мама	NOUN	_	Animacy=Anim|Case=Nom|Gender=Fem|Number=Sing	27	nsubj	27:nsubj	_
+27	знала	знать	VERB	_	Aspect=Imp|Gender=Fem|Mood=Ind|Number=Sing|Tense=Past|VerbForm=Fin|Voice=Act	16	parataxis	16:parataxis	SpaceAfter=No
+28	,	,	PUNCT	_	_	31	punct	31:punct	_
+29	что	что	SCONJ	_	_	31	mark	31:mark	_
+30	я	я	PRON	_	Case=Nom|Number=Sing|Person=1	31	nsubj	31:nsubj	_
+31	курю	курить	VERB	_	Aspect=Imp|Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin|Voice=Act	27	ccomp	27:ccomp	SpaceAfter=No
+32	!	!	PUNCT	_	_	31	punct	31:punct	SpaceAfter=No
+33	.	.	PUNCT	_	_	31	punct	31:punct	SpaceAfter=No
+34	.	.	PUNCT	_	_	31	punct	31:punct	SpaceAfter=No
+35	"	"	PUNCT	_	_	27	punct	27:punct	_
+
