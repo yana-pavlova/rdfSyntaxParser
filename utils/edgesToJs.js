@@ -3,7 +3,7 @@ var fs = require('fs');
 var N3Util = N3.Util;
 
 var parser = N3.Parser();
-var triples = fs.readFileSync('./links.ttl');
+var triples = fs.readFileSync('./ud2rdf.ttl');
 
 parser.parse(triples.toString(), function(error, triple, prefixes) {
   if (error) console.log(error);

@@ -27,7 +27,8 @@ class Query extends MyEventEmitter {
 
     get(term) {
         term = term.toLowerCase();
-        let fragmentsClient = new ldf.FragmentsClient('http://ldf.kloud.one/ontorugrammaform');
+        // let fragmentsClient = new ldf.FragmentsClient('http://ldf.kloud.one/ontorugrammaform');
+        let fragmentsClient = new ldf.FragmentsClient('http://localhost:3001/orgfhdt');
 
         let q =  
         `
@@ -75,7 +76,7 @@ class Query extends MyEventEmitter {
                     object: res['?lemmaO']
                 }
                 addResult(formTriple);
-                addResult(lemmaTriple);
+                if (lemmaTriple.predicate != 'http://www.w3.org/ns/lemon/ontolex#writtenRep') addResult(lemmaTriple);
             });
     
             r.on('end', () => {

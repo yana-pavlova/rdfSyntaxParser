@@ -1,16 +1,61 @@
 let conllu = require('conllu');
 let fs = require('fs');
-let conllTags2rdf = require('./conllTags2rdf');
+let conllTags2rdf = require('./utils/conllTags2rdf');
 
 let c = new conllu.Conllu()
 // c.serial = fs.readFileSync('./syntagrus/ru_syntagrus-ud-train.conllu', 'utf8');
-c.serial = fs.readFileSync('./syntagrus/ru_syntagrus-ud-test.conllu', 'utf8');
-// c.serial = fs.readFileSync('./syntagrus/test.conllu', 'utf8');
+// c.serial = fs.readFileSync('./syntagrus/ru_syntagrus-ud-test.conllu', 'utf8');
+c.serial = fs.readFileSync('./syntagrus/test.conllu', 'utf8');
+
+// { type:'amod', rule: '...', frequency: 1, weight: 1, id: type+uniqNumber }
+let rules = [];
+function parseSentence(sentence) {
+    let tokens = sentence.tokens;
+    let sentenceText = sentence.comments[1];
+    let l = tokens.length;
+    for (let i = 0; i < l; i++) {
+        w1 = tokens[i];
+        let deps = w1.deps.split(':');
+        let dep = deps[1];
+        let headId = deps[0];
+        let w2 = false;
+        let rule = false;
+        if (dep != 'root') {
+            for (let j = 0; j < l; j++) {
+                let t = tokens[j];
+                if (t.id == headId) {
+                    w2 = t;
+                    break;
+                }
+             }
+             rule = createWordsRule(w1, w2, dep, sentenceText);
+        }
+        else {
+            rule = createRootRule(w1, dep, sentenceText);
+        }
+        if (rule) rules.push(rule);
+    };
+};
+
+function getRdfPos (postag) {
+    return rfdPosTag = conllTags2rdf['upostag'][postag];
+}
+
+function createRdfFeats(feats) {
+    let result = [];
+    if(feats) {
+        for(key in feats) {
+            let rdfFeat = conllTags2rdf['feats'][key][feats[key]];
+            if (rdfFeat != undefined) result.push(rdfFeat);
+        };
+    };
+    return result;
+}
 
 function getFeats(str) {
     if (str) {
         let featsArray = str.split("|");
-        featsArray = featsArray.sort((a,b) => {
+        featsArray = featsArray.sort((a, b) => {
             if (a < b)
               return -1;
             if (a > b)
@@ -26,202 +71,178 @@ function getFeats(str) {
     }
 };
 
-
-function getLinkedWords(sentence) {
-    let tokens = sentence.tokens;
-    let sentenceText = sentence.comments[1];
-    for(let i = 0; i < tokens.length; i++) {
-        w1 = tokens[i];
-        var headOfW1 = w1.head; // получить номер токена, который по отношению к текущему является главным
-        var w2 = tokens[headOfW1 - 1]; // получить объект (токен), который по отношению к w1 является главным
-        createRule([w1, w2], sentenceText);
-    };
-};
-
-// { type:'amod', rule: '...', frequency: 1, weight: 1, id: type+uniqNumber }
-let rules = [];
-
-function createRule (words, sentenceText) {
-    let w1 = words[0];
-    let w2 = words[1];
-
-    let rule = '';
-
-    if (!w2) {
-        rule = createRootRule(w1, sentenceText);
-    }
-    else {
-        rule = createWordsRule(w1, w2, sentenceText);
-    }
-    if (rule) rules.push(rule);
-};
-
-// { "(s p o)": {arctype: {w1, w2}}
-let compRules = {};
-function countCompRules(prerequisites, rdfType, udType, sentenceText, w1, w2) {
-    if(!compRules.hasOwnProperty(prerequisites)) compRules[prerequisites] = {};
-    if(!Object.keys(compRules[prerequisites]).includes(rdfType)) {
-        compRules[prerequisites][rdfType] = {
-            sentence: sentenceText,
-            udType: udType, 
-            w1Form: w1.form,
-            w2Form: (w2) ? w2.form : 'root',
-        };
-    }
-};
-
-function createTail(idOfNewEntry, dep, head, sub) {
-    var firstTriple = "(" + idOfNewEntry + " http://www.w3.org/1999/02/22-rdf-syntax-ns#type " + dep + ") ^ ";
-    var secondTriple = "(" + idOfNewEntry + " http://www.w3.org/2002/07/owl#annotatedProperty http://www.w3.org/2000/01/rdf-schema#subClassOf) ^ ";
-    var thirdTriple = "(" + idOfNewEntry + " http://www.w3.org/2002/07/owl#annotatedSource " + sub + ") ^ ";
-    var fourthTriple = "(" + idOfNewEntry + " http://www.w3.org/2002/07/owl#annotatedTarget " + head + ") .";
-    var result = firstTriple + secondTriple + thirdTriple + fourthTriple; // вывод в правиле как строка
-    return result
-}
-
-function createRdfFeats(feats) {
-    let result = [];
-    if(feats) {
-        for(key in feats) {
-            let rdfFeat = conllTags2rdf['feats'][key][feats[key]];
-            if (rdfFeat != undefined) result.push(rdfFeat);
-        };
-    };
-    return result;
-}
-
-function createPreTriples(pos, rdfFeats) {
+function createPreTriples(rdfPos, rdfFeats) {
     let preTriples = [];
-    if (pos) preTriples.push(pos);
+    if (rdfPos) preTriples.push(rdfPos);
     if(rdfFeats.length != 0) {
         rdfFeats.forEach((f) => preTriples.push(f))
     };
     return preTriples;
 }
 
-function createWordsRule(w1, w2, sentenceText) {
-    var dep = conllTags2rdf['links'][w1.deprel];
-    if (dep == undefined) console.log(w1.deprel);
+function createWordsRule(w1, w2, dependency, sentenceText) {
+    let head = w2;
+    let dependant = w1;
+
+    let headRdfPos = getRdfPos(head.upostag);
+    let depRdfPos = getRdfPos(dependant.upostag);
     
-    //var dep = "http://kloud.one/rdfudedges#" + w1.deprel[0].toUpperCase() + w1.deprel.substring(1); // получить название связи в rdf
+    let headUdFeats = getFeats(head.feats);
+    let headRdfFeats = createRdfFeats(headUdFeats);
 
-    var idOfNewEntry = "_:id";
-    var sub = "?O";
-    var head = "?S";
+    let depUdFeats = getFeats(dependant.feats);
+    let depRdfFeats = createRdfFeats(depUdFeats);
 
-    let conclusion = createTail(idOfNewEntry, dep, head, sub);
+    let headPreTriples = createPreTriples(headRdfPos, headRdfFeats);
+    let depPreTriples = createPreTriples(depRdfPos, depRdfFeats);
 
-    var pos1 = conllTags2rdf['upostag'][w1.upostag]; // часть речи 1 слова в rdf
-    var pos2 = conllTags2rdf['upostag'][w2.upostag]; // часть речи 2 слова в rdf
+    let headPrereq = headPreTriples.map((p) => `(?H ${p})`).join(' ^ ');
+    let depPrereq = depPreTriples.map((p) => `(?D ${p})`).join(' ^ ');
 
-    var w1UdFeats = getFeats(w1.feats); // получаем морфологию 1 слова как объект
-    var w1RdfFeats = createRdfFeats(w1UdFeats);
-
-    var w1UdFeats = getFeats(w2.feats); // получаем морфологию 2 слова как объект
-    var w2RdfFeats = createRdfFeats(w1UdFeats);
-
-    var preTriples1 = createPreTriples(pos1, w1RdfFeats);
-
-    var preTriples2 = createPreTriples(pos2, w2RdfFeats);
-
-    var prerequisites = ""; // собираем предварительные условия для вывода правила
-
-    let pre1 = '';
-    for(let i = 0; i < preTriples1.length; i++) { // собираем по 1 слову
-        pre1 += "(?O " + preTriples1[i] + ")";
-        if ( i < preTriples1.length - 1 ) pre1 += ' ^ '; 
-    };
-
-    let pre2 = '';
-    for(let i = 0; i < preTriples2.length; i++) { // собираем по 2 слову
-        pre2 += "(?S " + preTriples2[i] + ")";
-        if ( i < preTriples2.length - 1 ) pre2 += ' ^ ';
-    };
-
-    countCompRules(pre2 + ' ^ '+ pre1, dep, w1.deprel, sentenceText, w1, w2);
-
-    prerequisites = pre2 + ' ^ '+ pre1 + " -> " + conclusion; // склеиваем предварительные условия и вывод (правило)
+    let prerequisites = '';
+    //  = headPrereq + ' ^ ' + depPrereq;
+    if (headPrereq != '') prerequisites += headPrereq;
+    if (headPrereq != '' && depPrereq != '') prerequisites += ` ^ ${depPrereq}`;
+    else prerequisites += depPrereq;
     
-    return createRuleObject(w1.deprel, prerequisites, sentenceText, w1, w2);
+    return createRuleObject(dependency, prerequisites, sentenceText, w1, w2);
 };
 
-function createRootRule(w1, sentenceText) {
-    var dep = conllTags2rdf['links'][w1.deprel];
-    // var dep = "http://kloud.one/rdfudedges#" + w1.deprel; // получить название связи в rdf
-    //var dep = dep[0].toUpperCase() + dep.substring(1);
-    var idOfNewEntry = "_:id";
-    var sub = "?O";
-    var head = "http://kloud.one/rdfudedges#root_node";
-
-    let conclusion = createTail(idOfNewEntry, dep, head, sub);
-
-    var pos1 = conllTags2rdf['upostag'][w1.upostag]; // часть речи 1 слова в rdf
-
-    var w1UdFeats = getFeats(w1.feats); // получаем морфологию 1 слова как объект
+function createRootRule(w1, dep, sentenceText) {
+    var pos1 = conllTags2rdf['upostag'][w1.upostag];
+    var w1UdFeats = getFeats(w1.feats);
     var w1RdfFeats = createRdfFeats(w1UdFeats);
-
     var preTriples1 = createPreTriples(pos1, w1RdfFeats);
 
-    var prerequisites = ""; // собираем предварительные условия для вывода правила
-    
-    for(let i = 0; i < preTriples1.length; i++) { // собираем по 1 слову
-        prerequisites += "(?O " + preTriples1[i] + ")";
+    var prerequisites = '';
+    for(let i = 0; i < preTriples1.length; i++) {
+        prerequisites += '(?D ' + preTriples1[i] + ')';
         if (i < preTriples1.length - 1) prerequisites += ' ^ ';
     };
-
-    countCompRules(prerequisites, dep, w1.deprel, sentenceText, w1, false);
-
-    prerequisites = prerequisites + " -> " + conclusion; // склеиваем предварительные условия и вывод (правило)
     
     return createRuleObject(w1.deprel, prerequisites, sentenceText, w1, false);
 };
 
 let typesCount = {};
-let wordCount = 0;
-function createRuleObject(type, rule, sentenceText, w1, w2) {
-    if(w1) wordCount++;
-    if(w2) wordCount++;
+function createRuleObject(depType, prerequisites, sentenceText, dependant, head) {
+    if(!depType) return false;
+
+    if(dependant) countWords(dependant);
+    if(head) countWords(head);
+
+    let headMorph = '';
+    let headForm = '';
+    let depMorph = '';
+    let depForm = '';
+    if (depType == 'root') {
+        // root always head
+        headMorph = 'root';
+        headForm = 'root';
+    }
+    else {
+        headForm = head.form;
+        headMorph = `POS=${head.upostag}|${head.feats}`;
+        depForm = dependant.form;
+        depMorph = `POS=${dependant.upostag}|${dependant.feats}`;
+        // head is blank node
+        if (head.form == undefined) {
+            headMorph = 'blank';
+            headForm = 'blank';
+        }
+        // dependant is blank node
+        else if (dependant.form == undefined) {
+            depMorph = 'blank';
+            depForm = 'blank';
+        }
+    }
+
     let ruleObj = false;
     let found = false;
-    let l = rules.length;
-    if(!type) {
-        return;
-    };
-    for (let i = 0; i < l; i++) {
+    let rulesLength = rules.length;
+    for (let i = 0; i < rulesLength; i++) {
         let r = rules[i];
-        if (r.rule == rule && r.type == type) {
+        if (r.depMorph == depMorph && r.headMorph == headMorph && r.type == depType) {
             r.frequency += 1;
             found = true;
             break;
         }
     }
     if (!found) {
-        if (!typesCount.hasOwnProperty(type)) typesCount[type] = 1;
-        else typesCount[type] += 1;
-        let w1Pos = w1.upostag;
-        let w2Pos = '';
-        let w1Feats = (w1.feats) ? w1.feats : '';
-        let w2Feats = '';
-        if (w2) {
-            if (w2.feats) w2Feats = w2.feats;
-            if (w2.upostag) w2Pos = w2.upostag; 
-        }
-        else {w2Pos = 'root'}
+        if (!typesCount.hasOwnProperty(depType)) typesCount[depType] = 1;
+        else typesCount[depType] += 1;
+
+        let nodeId = '_:UNIQUE';
+        
+        let linkType = conllTags2rdf['links'][depType];
+        let headVar;
+        if (headForm == 'root') headVar = 'ud:root_node';
+        else if (headForm == 'blank') headVar = 'ud:blank_node';
+        else headVar = '?H';
+        
+        let depVar;
+        if (depForm == 'blank') depVar = 'ud:blank_node';
+        else depVar = '?D';
+
+        let conclusion = `(${nodeId} rdf:type ${linkType}) ^ `
+            conclusion += `(${nodeId} owl:annotatedProperty rdfs:subClassOf) ^ `
+            conclusion += `(${nodeId} owl:annotatedSource ${headVar}) ^ `
+            conclusion += `(${nodeId} owl:annotatedTarget ${depVar}) .`
+
+        let rule = prerequisites + ' -> ' + conclusion;
+        let ruleId = `${depType}_${typesCount[depType]}`;
+
         ruleObj = {
             text: sentenceText,
-            w1Form: w1.form,
-            w2Form: (w2) ? w2.form : 'root',
-            w1Morph: `POS=${w1Pos}|${w1Feats}`,
-            w2Morph: `POS=${w2Pos}|${w2Feats}`,
-            id: `${type}_${typesCount[type]}`,
-            type: type,
+            headForm: headForm,
+            depForm: depForm,
+            headMorph: headMorph,
+            depMorph: depMorph,
+            id: ruleId,
+            type: depType,
             rule: rule,
             frequency: 1,
             weight: 1,
         }
+
+        countCompRules(prerequisites, depType, sentenceText, headForm, depForm);
     }
 
     return ruleObj;
+}
+
+// { "(s p o)": {arctype: {w1, w2}}
+let compRules = {};
+function countCompRules(prerequisites, depType, sentenceText, headForm, depForm) {
+    if(!compRules.hasOwnProperty(prerequisites)) compRules[prerequisites] = {};
+    if(!Object.keys(compRules[prerequisites]).includes(depType)) {
+        compRules[prerequisites][depType] = {
+            sentence: sentenceText,
+            udType: depType, 
+            head: headForm,
+            dependant: depForm,
+        };
+    }
+};
+
+let wordsTotal = 0;
+let wordsUniqueCount = 0;
+let wordsUnique = {}
+function countWords(word) {
+    wordsTotal++;
+    if( !wordsUnique.hasOwnProperty(word.lemma) ) {
+        wordsUnique[word.lemma] = {
+            count: 0,
+            forms: {}
+        };
+        wordsUniqueCount++;
+    }
+    wordsUnique[word.lemma].count++;
+    if(!wordsUnique[word.lemma].forms.hasOwnProperty(word.form)) {
+        wordsUnique[word.lemma].forms[word.form] = {
+            upostag: word.upostag,
+            feats: word.feats,
+        }
+    }
 }
 
 
@@ -231,7 +252,7 @@ function parseRules(cb) {
         // var sentence = s.tokens;
         // console.log(s.comments);
         
-        getLinkedWords(s);
+        parseSentence(s);
     })
     cb()
 }
@@ -276,11 +297,14 @@ function main(){
     parseRules(() => {
         splitRules(() => {
             saveAll();
-            let stats = `предложений в корпусе: ${c.sentences.length} \n`
-            stats += `всего слов: ${wordCount} \n`;
+            let stats = `предложений в корпусе: ${c.sentences.length} \n`;
+            stats += `всего слов: ${wordsTotal} \n`;
+            stats += `уникальных слов: ${wordsUniqueCount} \n`;
+
             stats += `всего правил: ${rules.length} \n`;
             stats += JSON.stringify(typesCount, null, 2);
             let compRulesSorted = {};
+
             // { "(s p o)": {arctype: {w1, w2}}
             for (let pre in compRules) {
                 if (Object.keys(compRules[pre]).length > 1) compRulesSorted[pre] = compRules[pre];
@@ -291,7 +315,9 @@ function main(){
             stats += JSON.stringify(compRulesSorted, null, 2);
             // console.log(stats);
             save('stats.txt', stats);
-            save('all_rules.json', JSON.stringify(rules, null, 2));
+            save('_all.json', JSON.stringify(rules, null, 2));
+            // console.log(JSON.stringify(wordsUnique, null, 2));
+            
         })
     });
 }
