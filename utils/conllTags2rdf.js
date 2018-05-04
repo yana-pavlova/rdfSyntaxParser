@@ -54,8 +54,8 @@ module.exports = {
             "Imp" : "lexinfo:aspect lexinfo:imperfective",
         },
         "Voice": {
-            "Act" :	"lexinfo:voice lexinfo:activeVoice",
-            "Pass" : "lexinfo:voice lexinfo:passiveVoice",
+        //     "Act" :	"lexinfo:voice lexinfo:activeVoice", // нет у глаголов
+        //     "Pass" : "lexinfo:voice lexinfo:passiveVoice", // нет у глаголов
             // "Mid" : "lexinfo:voice lexinfo:middleVoice", // в OpenCorpora отсутствует
         },
         "Polarity": {

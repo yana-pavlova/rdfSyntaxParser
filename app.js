@@ -138,6 +138,8 @@ function createRuleObject(depType, prerequisites, sentenceText, dependant, head)
         // root always head
         headMorph = 'root';
         headForm = 'root';
+        depForm = dependant.form;
+        depMorph = `POS=${dependant.upostag}|${dependant.feats}`;
     }
     else {
         headForm = head.form;

@@ -1,4 +1,5 @@
 let { fullUriToPrefixed } = require('./prefixes');
+const cTable = require('console.table');
 
 function view(triples) {
     let group = {};
@@ -12,15 +13,19 @@ function view(triples) {
     })
     
     let edges = {};
-    let words = {};
+    let words = [];
     for(let s in group) {
         group[s].forEach((po) => {
             if (po.predicate == 'owl:annotatedProperty') edges[s] = group[s];
-            if (po.predicate == 'ontolex:writtenRep') words[s] = group[s];
+            if (po.predicate == 'ontolex:writtenRep') {
+                group[s].forEach((po) => {
+                    words.push({s: s, p: po.predicate, o: po.object})
+                })
+            }
         })
     }
-    
-    let edgesView = `EDGES (${Object.keys(edges).length}):\n`;
+    console.table(words)
+    let edgesTable = [];
     for(let s in edges) {
         let edgeType, source, target;
         edges[s].forEach((po) => {
@@ -28,13 +33,11 @@ function view(triples) {
             if (po.predicate == 'owl:annotatedSource') source = po.object;
             if (po.predicate == 'owl:annotatedTarget') target = po.object;
         })
-        edgesView += `${source} -> ${edgeType} -> ${target} \n`;
+        edgesTable.push({head: source, edge: edgeType, dependant: target})
     }
+    console.log('EDGES', edgesTable.length);
     
-    // console.log(`Words ${Object.keys(words).length}:`, words);
-    console.log(`Edges ${Object.keys(edges).length}:`, edges);
-    console.log(edgesView);
-    
+    console.table(edgesTable)
 }
 
 module.exports = view;

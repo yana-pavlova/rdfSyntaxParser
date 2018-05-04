@@ -80,7 +80,7 @@ let fakeTurtles = `
     :b :p2 :c .
 `
 // parseAndAddRules(fakeRules)
-parseAndAddRules(require('../rules/root.json'))
+parseAndAddRules(require('../rules/_all.json'))
 // parseAndAddRules(require('../handMadeRules.json'))
 // parseAndAddRules(false)
     .then((msg) => {
