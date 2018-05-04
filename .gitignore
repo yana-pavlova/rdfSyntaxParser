@@ -21,4 +21,4 @@ ehthumbs.db
 Thumbs.db
 
 NOTES.MD
-rules_all
+rules/*.*

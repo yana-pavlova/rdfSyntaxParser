@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "conllu": "^0.1.2",
+    "console.table": "^0.10.0",
     "hylar": "github:cnstntn-kndrtv/HyLAR-Reasoner",
     "ldf-client": "^2.0.5"
   }

@@ -1,5 +1,10 @@
 [
     {
+        "id": "nsubj_0",
+        "type": "nsubj",
+        "rule": "(?S lexinfo:partOfSpeech lexinfo:verb) ^ (?S lexinfo:number ?N) ^ (?S lexinfo:person ?P) ^ (?O lexinfo:case lexinfo:nominativeCase) ^  (?O lexinfo:partOfSpeech lexinfo:noun) ^ (?O lexinfo:number ?N) -> (:id http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://kloud.one/rdfudedges#Nsubj) ^ (:id http://www.w3.org/2002/07/owl#annotatedProperty http://www.w3.org/2000/01/rdf-schema#subClassOf) ^ (:id http://www.w3.org/2002/07/owl#annotatedSource ?O) ^ (:id http://www.w3.org/2002/07/owl#annotatedTarget ?S) ."
+    },
+    {
         "id": "nsubj_1",
         "type": "nsubj",
         "rule": "(?S lexinfo:partOfSpeech lexinfo:verb) ^ (?S lexinfo:number ?N) ^ (?S lexinfo:person ?P) ^ (?O lexinfo:case lexinfo:nominativeCase) ^  (?O lexinfo:partOfSpeech lexinfo:noun) ^ (?O lexinfo:number ?N) ^ (?O lexinfo:person ?P) -> (:id http://www.w3.org/1999/02/22-rdf-syntax-ns#type http://kloud.one/rdfudedges#Nsubj) ^ (:id http://www.w3.org/2002/07/owl#annotatedProperty http://www.w3.org/2000/01/rdf-schema#subClassOf) ^ (:id http://www.w3.org/2002/07/owl#annotatedSource ?O) ^ (:id http://www.w3.org/2002/07/owl#annotatedTarget ?S) ."
